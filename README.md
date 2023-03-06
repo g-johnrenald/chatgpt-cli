@@ -12,6 +12,8 @@ direct call.
 pip install -r requirements.txt
 ```
 
+3. Create a .env file and put OPENAI_API_KEY inside.
+
 ## Usage
 
 1. Open a terminal/command prompt and navigate to the root directory of the project.
