@@ -1,10 +1,26 @@
 import os
 import openai
+import time
 from rich import print
 from dotenv import load_dotenv
 from langchain.llms import OpenAIChat
 from langchain.chains import ConversationChain
 from langchain.chains.conversation.memory import ConversationSummaryBufferMemory
+from tqdm import tqdm
+
+
+def show_waiting_indicator(func):
+    def wrapper(*args, **kwargs):
+        progress_bar = tqdm(total=100, desc="Waiting for response...",
+                            unit="%")
+        for i in range(100):
+            progress_bar.update(1)
+            time.sleep(0.05)
+        progress_bar.close()
+        result = func(*args, **kwargs)
+        return result
+
+    return wrapper
 
 
 class ChatGpt:
@@ -60,23 +76,14 @@ if __name__ == '__main__':
         if command == "q":
             break
 
-        if command == "o":
-            command = input("Use langchain? (y/n): ")
-
-        # contents = []
-        # print("Prompt: ")
-        # while True:
-        #     line = input()
-        #     if line:
-        #         contents.append(line)
-        #     else:
-        #         break
-        # user_prompt = "\n".join(contents)
-
         user_prompt = input("Prompt (q to quit): ")
 
         if user_prompt == "q":
             break
+
+        if user_prompt == "o":
+            command = input("Use langchain? (y/n): ")
+            continue
 
         if command == "y":
             answer = langchain_gpt.predict(user_prompt)
