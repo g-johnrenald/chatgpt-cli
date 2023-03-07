@@ -76,7 +76,7 @@ if __name__ == '__main__':
         if command == "q":
             break
 
-        user_prompt = input("Prompt (q to quit): ")
+        user_prompt = input("Prompt (q to quit, o to option): ")
 
         if user_prompt == "q":
             break
@@ -87,8 +87,12 @@ if __name__ == '__main__':
 
         if command == "y":
             answer = langchain_gpt.predict(user_prompt)
-            print(f"Langchain: {answer}\n")
-        else:
+            print(f"\nLangchain: {answer}\n")
+        elif command == "n":
             # print(user_prompt.strip())
             answer = chat_gpt.predict(user_prompt)
-            print(f"GPT: {answer}\n")
+            print(f"\nGPT: {answer}\n")
+        elif command == "q":
+            break
+        else:
+            print("Invalid input. Please try again.")
