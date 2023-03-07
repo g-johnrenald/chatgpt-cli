@@ -1,9 +1,9 @@
-##Constantly Developing
-See issues
-
 ## chatgpt-cli
 This is a command-line interface (CLI) application that allows for easy communication with ChatGPT API. It provides two options to call the ChatGPT API which are via langchain using memory and 
-direct call. 
+direct call.
+
+## Current status
+Constanly developing, see issues
 
 ## Requirements
 
