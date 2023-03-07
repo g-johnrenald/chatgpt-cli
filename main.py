@@ -51,14 +51,17 @@ if __name__ == '__main__':
     chat_gpt = ChatGpt(key=token, temperature=1, initial_prompt=initial_prompt)
     langchain_gpt = LangChainGpt(initial_content=initial_prompt)
 
+    command = input("Use langchain? (y/n), q to quit: ")
     while True:
-        switch = input("Use langchain? (y/n): ")
-        if switch == "q":
-            break
-
-        if switch != "y" and switch != "n":
+        if command != "y" and command != "n" and command != "q" and command != "o":
             print("Invalid input. Please try again.")
             continue
+
+        if command == "q":
+            break
+
+        if command == "o":
+            command = input("Use langchain? (y/n): ")
 
         # contents = []
         # print("Prompt: ")
@@ -70,12 +73,12 @@ if __name__ == '__main__':
         #         break
         # user_prompt = "\n".join(contents)
 
-        user_prompt = input("Prompt: ")
+        user_prompt = input("Prompt (q to quit): ")
 
         if user_prompt == "q":
             break
 
-        if switch == "y":
+        if command == "y":
             answer = langchain_gpt.predict(user_prompt)
             print(f"Langchain: {answer}\n")
         else:
