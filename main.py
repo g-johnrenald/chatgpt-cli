@@ -2,24 +2,26 @@ import os
 import time
 from rich import print
 from dotenv import load_dotenv
-from tqdm import tqdm
 from chat_gpt_wrapper import ChatGpt
 from langchain_wrapper import LangChainGpt
 
 if __name__ == '__main__':
     # Load environment variables
-    load_dotenv()
-    token = os.getenv("OPENAI_API_KEY")
+    load_dotenv() # this is for langchain
+    token = os.getenv("OPENAI_API_KEY") # this is for chat gpt api
 
+    # Load system message from file
     try:
         with open('system_message.txt', 'r') as f:
             system_message = f.read()
     except FileNotFoundError:
         print('File not found')
 
+    # Initialize wrapper objects
     chat_gpt = ChatGpt(key=token, temperature=1, initial_prompt=system_message)
     langchain_gpt = LangChainGpt(system_message=system_message)
 
+    # Start gpt chat
     command = input("Use langchain? (y/n), q to quit: ")
     while True:
         if command != "y" and command != "n" and command != "q" and command != "o":

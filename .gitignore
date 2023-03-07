@@ -3,3 +3,5 @@
 /.idea/modules.xml
 /.idea/inspectionProfiles/profiles_settings.xml
 /.idea/chatgpt-cli.iml
+__pycache__/chat_gpt_wrapper.cpython-310.pyc
+__pycache__/langchain_wrapper.cpython-310.pyc
