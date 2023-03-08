@@ -1,8 +1,6 @@
 import os
-import time
-from rich import print
 from dotenv import load_dotenv
-from tqdm import tqdm
+from rich import print
 from chat_gpt_wrapper import ChatGpt
 from langchain_wrapper import LangChainGpt
 
