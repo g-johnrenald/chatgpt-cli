@@ -38,7 +38,7 @@ if __name__ == '__main__':
 
         if command == "y":
             print(f"\nLangchain:")
-            langchain_gpt.predict(user_prompt)
+            answer = langchain_gpt.predict(user_prompt)
             print("\n")
         elif command == "n":
             answer = chat_gpt.predict(user_prompt)
@@ -47,3 +47,4 @@ if __name__ == '__main__':
             break
         else:
             print("Invalid input. Please try again.")
+            continue

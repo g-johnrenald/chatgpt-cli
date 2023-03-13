@@ -1,8 +1,10 @@
 import sys
 from typing import Any, Dict, List, Union
-from rich import print
+
 from langchain.callbacks import BaseCallbackHandler
 from langchain.schema import LLMResult, AgentAction, AgentFinish
+from rich import print
+from rich.console import Console
 
 
 class StreamingPrintCallbackHandler(BaseCallbackHandler):
@@ -14,7 +16,8 @@ class StreamingPrintCallbackHandler(BaseCallbackHandler):
 
     def on_llm_new_token(self, token: str, **kwargs: Any) -> None:
         """Run on new LLM token. Only available when streaming is enabled."""
-        print(token, end="", file=sys.stderr, flush=True)
+        console = Console()
+        console.print(token, style="#AFE1AF", end="")
 
     def on_llm_end(self, response: LLMResult, **kwargs: Any) -> None:
         """Run when LLM ends running."""
