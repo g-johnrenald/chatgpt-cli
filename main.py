@@ -1,8 +1,6 @@
 import os
-import time
-from rich import print
 from dotenv import load_dotenv
-from tqdm import tqdm
+from rich import print
 from chat_gpt_wrapper import ChatGpt
 from langchain_wrapper import LangChainGpt
 
@@ -40,7 +38,7 @@ if __name__ == '__main__':
 
         if command == "y":
             print(f"\nLangchain:")
-            langchain_gpt.predict(user_prompt)
+            answer = langchain_gpt.predict(user_prompt)
             print("\n")
         elif command == "n":
             answer = chat_gpt.predict(user_prompt)
@@ -49,3 +47,4 @@ if __name__ == '__main__':
             break
         else:
             print("Invalid input. Please try again.")
+            continue
